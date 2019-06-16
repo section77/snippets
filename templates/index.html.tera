@@ -1,0 +1,47 @@
+{% extends "base" %}
+
+{% block content %}
+
+<h1>Create new snippet</h1>
+<form action="/create" method="post" accept-charset="utf-8">
+  <label>
+    Tags (separated with ','): <br/>
+    <input type="text" name="tags" style="width: 100%">
+  </label>
+  <br/>
+  <label>
+    Content: <br/>
+    <textarea name="content" rows="20" style="width: 100%"></textarea>
+  </label>
+  <br/>
+  <input type="submit" value="Submit">
+</form>
+
+
+<h1>Snippets</h1>
+<style>
+  table { width: 100%; }
+  table, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+  }
+</style>
+<table>
+  {% for snippet in snippets %}
+  <tr>
+    <td style="padding: 0px 10px 0px 10px">{{snippet.id}}</td>
+    <td>{{snippet.ts | date_time}}</td>
+    <td>{{snippet.tags}}</td>
+    <td><pre>{{snippet.content}}</pre></td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+
+<h1>Raw context</h1>
+<pre>
+  {{__tera_context}}
+</pre>
+
+{% endblock content %}
