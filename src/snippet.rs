@@ -1,3 +1,4 @@
+//! models snippets
 use chrono::serde::ts_seconds;
 use chrono::{DateTime, Utc};
 use rocket::http::RawStr;
@@ -28,14 +29,19 @@ impl Snippet {
     }
 }
 
+/// free form tags
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Tags(Vec<String>);
+
+/// tags are separated with comma in the ui.
+/// this ~FromFormValue~ implementation parses the tags, and convert it
+/// in a ~Tags~ datastructure.
 impl<'a> FromFormValue<'a> for Tags {
     type Error = ();
     fn from_form_value(form_value: &'a RawStr) -> Result<Tags, ()> {
         let s = form_value.url_decode_lossy();
         Ok(Tags(
-            s.split(",").map(|s| s.trim()).map(String::from).collect(),
+            s.split(',').map(|s| s.trim()).map(String::from).collect(),
         ))
     }
 }

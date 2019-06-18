@@ -1,25 +1,36 @@
-use crate::{Snippet, SnippetId, Tags};
-use std::convert::AsRef;
+//! lookup / save snippets
+use crate::snippet::{Snippet, SnippetId, Tags};
 use std::fs;
 use std::io;
 use std::path;
 
+/// Repository API
 pub trait Repository {
     fn next_id(&self) -> io::Result<SnippetId>;
     fn create(&self, tags: Tags, content: &str) -> io::Result<Snippet>;
     fn list(&self) -> io::Result<Vec<Snippet>>;
 }
 
+/// Simple file-based Repository
 #[derive(Debug)]
 pub struct FileRepository {
     path: path::PathBuf,
 }
 
 impl FileRepository {
-    pub fn new(path: &path::Path) -> Self {
-        FileRepository {
-            path: path.to_path_buf(),
+    pub fn new(path: &path::Path) -> Result<Self, String> {
+        if !path.exists() {
+            fs::create_dir_all(path).map_err(|err| {
+                format!(
+                    "unable to create repo directory: {:?} - error: {}",
+                    path, err
+                )
+            })?
         }
+
+        Ok(FileRepository {
+            path: path.to_path_buf(),
+        })
     }
 }
 
@@ -41,7 +52,7 @@ impl Repository for FileRepository {
     fn create(&self, tags: Tags, content: &str) -> io::Result<Snippet> {
         let id = self.next_id()?;
 
-        let snippet = Snippet::new(id, tags, content.as_ref());
+        let snippet = Snippet::new(id, tags, content);
 
         let file_path = self.path.join(format!("{}.json", id));
         let json = serde_json::to_string(&snippet)?;
