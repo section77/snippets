@@ -1,0 +1,3 @@
+* simple project for our rust sesions
+
+wip ...
