@@ -3,6 +3,8 @@ language: rust
 rust:
   - nightly
 
+dist: trusty
+
 cache: cargo
 
 script:
@@ -10,8 +12,6 @@ script:
   - cargo doc --document-private-items --no-deps --all
 
 deploy:
-  edge:
-    branch: v1.8.47
   provider: pages
   skip-cleanup: true
   local-dir: target/doc/
