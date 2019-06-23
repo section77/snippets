@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["rocket_uri_macro_create","Rocket code generated wrapping URI macro."],["rocket_uri_macro_index","Rocket code generated wrapping URI macro."]],"mod":[["endpoints","http endpoints"],["repository","lookup / save snippets"],["snippet","models snippets"]]});

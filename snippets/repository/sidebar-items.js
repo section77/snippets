@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["FileRepository","Simple file-based Repository"]],"trait":[["Repository","Repository API"]]});

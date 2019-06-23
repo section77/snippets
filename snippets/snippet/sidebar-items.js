@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Snippet",""],["_IMPL_DESERIALIZE_FOR_Tags",""],["_IMPL_SERIALIZE_FOR_Snippet",""],["_IMPL_SERIALIZE_FOR_Tags",""]],"struct":[["Snippet",""],["Tags","free form tags"]],"type":[["SnippetId",""]]});
