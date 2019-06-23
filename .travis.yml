@@ -1,0 +1,20 @@
+language: rust
+
+rust:
+  - nightly
+
+cache: cargo
+
+script:
+  - cargo test
+  - cargo doc --document-private-items --no-deps --all
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: target/doc/
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+
