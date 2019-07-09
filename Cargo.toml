@@ -5,14 +5,14 @@ authors = ["j-keck <jhyphenkeck@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-rocket = "0.4.1"
-serde = { version = "1.0.92", features = ["derive"] }
-serde_json = "1.0.39"
-chrono = {version = "0.4.6", features = ["serde"] }
+rocket = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = {version = "0.4", features = ["serde"] }
 
 
 
 [dependencies.rocket_contrib]
-version = "0.4.1"
+version = "0.4"
 default-features = false
 features = ["tera_templates", "uuid"]

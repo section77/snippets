@@ -14,7 +14,7 @@ let
 
   rust = (pkgs.rustChannelOf {
     channel = "nightly";
-    date = "2019-06-20";
+    date = "2019-07-08";
   });
 
   nightlyRustPlatform = pkgs.makeRustPlatform { inherit (rust) rustc cargo; };
@@ -24,7 +24,7 @@ in nightlyRustPlatform.buildRustPackage rec {
 
   src = pkgs.nix-gitignore.gitignoreSource [] ./.;
 
-  cargoSha256 = "sha256:19526mlz3x9pxm734272w80k8j7argb055blf7ziscjw6jf67j1r";
+  cargoSha256 = "sha256:1ng54jg08pb13w25xk7h4jn9jg6mvmmzl1z2wjc3wka66r5dq5hs";
 
   # https://github.com/NixOS/nixpkgs/issues/61618
   preConfigure = ''
