@@ -1,0 +1,29 @@
+
+#+BEGIN_SRC rustic
+  fn main() {
+      fn add1(n: i32) -> i32 {
+          n + 1
+      }
+      let _add12 = |n: i32| n + 1;
+
+      let o: Option<i32> = Some(2);
+      let res = match o {
+          None => None,
+          Some(i) => Some(i + 1),
+      };
+
+
+      println!("res1 {:?}, res2: {:?}", res, res2);
+  }
+#+END_SRC
+
+#+RESULTS:
+: warning: function is never used: `add1`
+:  --> src/main.rs:3:5
+:   |
+: 3 |     fn add1(n: i32) -> i32 {
+:   |     ^^^^^^^^^^^^^^^^^^^^^^
+:   |
+:   = note: #[warn(dead_code)] on by default
+:
+: res1 Some(3), res2: Some(3)

@@ -1,0 +1,14 @@
+
+#+BEGIN_SRC rustic
+  fn main() {
+      let xs = (1..1000000)
+          .filter(|n| n < &10)
+          .map(|n| n * 10)
+          .collect::<Vec<_>>();
+
+      println!("res {:?}", xs);
+  }
+#+END_SRC
+
+#+RESULTS:
+: res [10, 20, 30, 40, 50, 60, 70, 80, 90]

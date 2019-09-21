@@ -1,0 +1,51 @@
+% Created 2019-09-17 Tue 20:30
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{minted}
+\author{Jürgen Keck}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Jürgen Keck},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.1 (Org mode 9.1.9)},
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\begin{minted}[frame=lines,fontsize=\scriptsize,linenos]{rustic}
+fn main() {
+    fn add1(n: i32) -> i32 {
+        n + 1
+    }
+    let _add12 = |n: i32| n + 1;
+
+    let o: Option<i32> = Some(2);
+    let res = match o {
+        None => None,
+        Some(i) => Some(i + 1),
+    };
+
+    let res2 = o.map(|i: i32| i ^ 2);
+
+    println!("res1 {:?}, res2: {:?}", res, res2);
+}
+\end{minted}
+\end{document}

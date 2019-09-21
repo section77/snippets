@@ -9,6 +9,7 @@ pub trait Repository {
     fn next_id(&self) -> io::Result<SnippetId>;
     fn create(&self, tags: Tags, content: &str) -> io::Result<Snippet>;
     fn list(&self) -> io::Result<Vec<Snippet>>;
+    fn filter(&self, pattern: &str) -> io::Result<Vec<Snippet>>;
 }
 
 /// Simple file-based Repository
@@ -83,5 +84,11 @@ impl Repository for FileRepository {
 
         snippets.sort_unstable_by(|a, b| a.ts.partial_cmp(&b.ts).unwrap().reverse());
         Ok(snippets)
+    }
+
+
+
+    fn filter(&self, pattern: &str) -> io::Result<Vec<Snippet>> {
+       Ok(self.list()?.into_iter().filter(|s| s.content.contains(pattern)).collect())
     }
 }

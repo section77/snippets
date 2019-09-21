@@ -27,7 +27,7 @@ pub type Repo<'a> = State<'a, Mutex<FileRepository>>;
 #[get("/")]
 pub fn index(repo: Repo) -> Template {
     let repo = repo.lock().unwrap();
-    let snippets = repo.list().unwrap();
+    let snippets = repo.filter("hallo").unwrap();
 
     #[derive(Serialize)]
     struct IndexCtx {
