@@ -6,5 +6,4 @@ implementors["snippets"] = [{text:"impl&lt;'de&gt; <a class=\"trait\" href=\"htt
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

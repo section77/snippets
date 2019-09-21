@@ -6,5 +6,4 @@ implementors["snippets"] = [];
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()

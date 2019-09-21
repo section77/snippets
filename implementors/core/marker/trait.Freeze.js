@@ -6,5 +6,4 @@ implementors["snippets"] = [{text:"impl Freeze for <a class=\"struct\" href=\"sn
             } else {
                 window.pending_implementors = implementors;
             }
-        
-})()
+        })()
